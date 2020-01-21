@@ -1,0 +1,17 @@
+.text-with-title {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: 4px;
+}
+.text-with-title .title {
+  color: #1e56a0;
+  font-size: 12px;
+  font-family: OpenSans-Bold;
+}
+.text-with-title .text {
+  color: #163172;
+  font-size: 16px;
+  font-family: Nunito;
+}
