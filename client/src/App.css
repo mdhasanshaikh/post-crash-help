@@ -1,0 +1,37 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f6f6f6;
+}
+nav {
+  padding: 0px 100px;
+  width: calc(100% - 200px);
+  height: 64px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  font-family: DinPro-Bold;
+  color: #fff;
+  font-size: 20px;
+  background-color: #163172;
+  box-shadow: 0 0 4px 0 rgba(22, 49, 144, 0.06),
+    0 4px 4px 0 rgba(22, 49, 144, 0.12);
+  float: left;
+}
+main {
+  padding: 64px 0px 0px;
+  width: calc(100% - 200px);
+  height: calc(100vh - 64px);
+  overflow: scroll;
+  float: left;
+}
+.listTitle {
+  color: #163172;
+  margin: 16px 16px 0px;
+  font-size: 20px;
+  font-family: OpenSans-Bold;
+  float: left;
+}

@@ -1,0 +1,26 @@
+.card {
+  margin: 16px;
+  padding: 16px;
+  width: calc(100% - 64px);
+  height: auto;
+  box-shadow: 0 2px 4px rgba(92, 99, 105, 0.15);
+  border-radius: 4px;
+  background-color: #fff;
+  float: left;
+}
+.top-section {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 88px;
+}
+.card .title {
+  color: #163172;
+  font-size: 16px;
+  font-family: OpenSans-Bold;
+}
+.card .date {
+  color: #163172;
+  font-size: 16px;
+  font-family: Nunito;
+}
