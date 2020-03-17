@@ -15,7 +15,7 @@ const AccidentSchema = new Schema({
     required: true,
     unique: true
   },
-  server: {
+  serve: {
     type: Boolean,
     required: true,
     default: false

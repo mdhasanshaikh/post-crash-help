@@ -4,6 +4,9 @@ import RecordList from "./components/record-list";
 import AlertPopup from "./components/alert-popup";
 import NotificationCenter from "./components/notification-center/notification-center";
 
+import { Provider } from "react-redux";
+import store from "./store";
+
 class App extends Component {
   state = {
     accidents: [],
@@ -15,17 +18,10 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.getAllAccidents();
+    // this.getAllAccidents();
   }
 
-  getAllAccidents = _ => {
-    // const scope = this;
-
-    fetch("http://localhost:4000/accidents")
-      .then(res => res.json())
-      .then(res => this.setState({ accidents: res.data }))
-      .catch(err => console.log(err));
-  };
+  // getAllAccidents = _ => {};
 
   getAllServedAccidents = _ => {
     let allAccidents = this.state.accidents;
@@ -98,21 +94,7 @@ class App extends Component {
     });
   };
 
-  handleServedBtnClick = accident_id => {
-    fetch(
-      `http://localhost:4000/accidents/update?accident_id="${accident_id}"&status=${1}`
-    )
-      .then(this.getAllAccidents)
-      .catch(err => console.log(err));
-
-    const clickedAccident = this.state.clickedAccident;
-
-    if (Object.entries(clickedAccident).length !== 0) {
-      this.setState({
-        clickedAccident: {}
-      });
-    }
-  };
+  handleServedBtnClick = accident_id => {};
 
   handleNotificationItemClick = clickAccident => {
     this.setState({ clickedAccident: clickAccident });
@@ -126,26 +108,29 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <nav>Post Crash Help</nav>
-        <main>
-          <div className="listTitle">All accidents</div>
-          <RecordList accidents={this.getAllServedAccidents()} />
-        </main>
+      <Provider store={store}>
+        <div className="App">
+          <nav>Post Crash Help</nav>
+          <main>
+            <div className="listTitle">All accidents</div>
+            <RecordList />
+            {/* <RecordList accidents={this.getAllServedAccidents()} /> */}
+          </main>
 
-        <NotificationCenter
-          accidents={this.getAllUnServedAccidents()}
-          handleNotificationItemClick={this.handleNotificationItemClick}
-          handleServedBtnClick={this.handleServedBtnClick}
-        />
-        {Object.entries(this.state.clickedAccident).length === 0 ? null : (
-          <AlertPopup
-            accident={this.state.clickedAccident}
-            handleAlertBoxClose={this.handleAlertBoxClose}
+          <NotificationCenter
+            accidents={this.getAllUnServedAccidents()}
+            handleNotificationItemClick={this.handleNotificationItemClick}
             handleServedBtnClick={this.handleServedBtnClick}
           />
-        )}
-      </div>
+          {Object.entries(this.state.clickedAccident).length === 0 ? null : (
+            <AlertPopup
+              accident={this.state.clickedAccident}
+              handleAlertBoxClose={this.handleAlertBoxClose}
+              handleServedBtnClick={this.handleServedBtnClick}
+            />
+          )}
+        </div>
+      </Provider>
     );
   }
 }
