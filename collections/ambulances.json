@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5e71c57f40a14f9bdacf592e"},"availability":true,"latitude":"19.292140","longitude":"72.870160","vehicle_id":"MH:02 AM1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c61c40a14f9bdacf5930"},"availability":true,"latitude":"19.292720","longitude":"72.872370","vehicle_id":"MH:02 AM1245","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c6a440a14f9bdacf5931"},"availability":true,"latitude":"19.288530","longitude":"72.865600","vehicle_id":"MH:02 AM1246","__v":{"$numberInt":"0"}}

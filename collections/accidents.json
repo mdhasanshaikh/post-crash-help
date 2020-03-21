@@ -1,0 +1,12 @@
+{"_id":{"$oid":"5e71c85c6dcd90a0a032c9a7"},"serve":false,"latitude":"19.288720","longitude":"72.874720","vehicle_id":"MH:02 MD1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c8976dcd90a0a032c9a9"},"serve":false,"latitude":"19.287154","longitude":"72.870762","vehicle_id":"MH:02 ND1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c9136dcd90a0a032c9aa"},"serve":false,"latitude":"19.286430","longitude":"72.872813","vehicle_id":"MH:04 LJ1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c95f6dcd90a0a032c9ab"},"serve":false,"latitude":"19.286812","longitude":"72.878874","vehicle_id":"MH:04 PK1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c9a96dcd90a0a032c9ac"},"serve":true,"latitude":"0.000000","longitude":"0.000000","vehicle_id":"MH:02 JD1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c9ba6dcd90a0a032c9ad"},"serve":true,"latitude":"0.000000","longitude":"0.000000","vehicle_id":"MH:02 PH1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c9cc6dcd90a0a032c9ae"},"serve":true,"latitude":"0.000000","longitude":"0.000000","vehicle_id":"MH:02 RF1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c9df6dcd90a0a032c9af"},"serve":true,"latitude":"0.000000","longitude":"0.000000","vehicle_id":"MH:04 JA1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c9f26dcd90a0a032c9b0"},"serve":true,"latitude":"0.000000","longitude":"0.000000","vehicle_id":"MH:02 AG1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71ca416dcd90a0a032c9b1"},"serve":false,"latitude":"19.282736","longitude":"72.876828","vehicle_id":"MH:02 GO1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71ca9f6dcd90a0a032c9b2"},"serve":false,"latitude":"19.292009","longitude":"72.867892","vehicle_id":"MH:02 JL1234","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71cac96dcd90a0a032c9b3"},"serve":true,"latitude":"0.000000","longitude":"0.000000","vehicle_id":"MH:02 RW1234","__v":{"$numberInt":"0"}}

@@ -1,17 +1,26 @@
 import React, { Component } from "react";
 import "./alert-popup.css";
 
+import { connect } from "react-redux";
+import { updateAccident } from "../../actions/accidentActions";
+import PropTypes from "prop-types";
+
 import MapContainer from "./components/map-container";
 
 class AlertPopup extends Component {
   state = {};
 
+  static propTypes = {
+    updateAccident: PropTypes.func.isRequired
+  };
+
+  handleServedBtnClick = async accidentId => {
+    await this.props.updateAccident(accidentId);
+    this.props.handleAlertBoxClose();
+  };
+
   render() {
     const accident = this.props.accident;
-    const ambulances = this.props.ambulances;
-
-    console.log(accident);
-    console.log(ambulances);
 
     return (
       <div className="alert-popup">
@@ -19,13 +28,13 @@ class AlertPopup extends Component {
           className="background-blur"
           onClick={this.props.handleAlertBoxClose}
         />
+        <div className="map-container">
+          <MapContainer
+            accident={this.props.accident}
+            ambulances={this.props.ambulances}
+          />
+        </div>
         <div className="popup-box">
-          <div className="map-container">
-            <MapContainer
-              accident={this.props.accident}
-              ambulances={this.props.ambulances}
-            />
-          </div>
           <div className="content">
             <div className="top-section">
               <div className="title">{accident.location}</div>
@@ -35,9 +44,8 @@ class AlertPopup extends Component {
               <span>{accident.patientName}</span>, {accident.license_no}
             </div>
             <div className="button-section">
-              <button
-                onClick={() => this.props.handleServedBtnClick(accident.id)}>
-                Done
+              <button onClick={() => this.handleServedBtnClick(accident.id)}>
+                Serve
               </button>
             </div>
           </div>
@@ -47,4 +55,4 @@ class AlertPopup extends Component {
   }
 }
 
-export default AlertPopup;
+export default connect(null, { updateAccident })(AlertPopup);

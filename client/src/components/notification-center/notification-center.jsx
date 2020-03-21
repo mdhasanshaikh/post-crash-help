@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./notification-center.css";
 
 import chevronUpIcon from "../../assert/chevron-up-icon.png";
 import chevronDownIcon from "../../assert/chevron-down-icon.png";

@@ -1,0 +1,12 @@
+{"_id":{"$oid":"5e71bfc538d7d99338b5ffe7"},"vehicle_id":"MH:04 LJ1234","name":"Lijin Joy","blood_grp":"+B","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71bfda38d7d99338b5ffe8"},"vehicle_id":"MH:02 ND1234","name":"Neel Desai","blood_grp":"+A","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c00d38d7d99338b5ffe9"},"vehicle_id":"MH:04 PK1234","name":"Pratha Kulkarni","blood_grp":"+B","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c02438d7d99338b5ffea"},"vehicle_id":"MH:02 MD1234","name":"Mdhasan Shaikh","blood_grp":"+A","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c06338d7d99338b5ffeb"},"vehicle_id":"MH:02 JD1234","name":"John D'costa","blood_grp":"+O","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c12c38d7d99338b5ffec"},"vehicle_id":"MH:02 PH1234","name":"Paul Hart","blood_grp":"+O","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c17438d7d99338b5ffed"},"vehicle_id":"MH:02 RF1234","name":"Ryan Fernandes","blood_grp":"-O","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c1f438d7d99338b5ffee"},"vehicle_id":"MH:04 JA1234","name":"Jenny Adam","blood_grp":"-O","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c24c38d7d99338b5ffef"},"vehicle_id":"MH:02 AG1234","name":"Austine Gemma","blood_grp":"+A","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c2af38d7d99338b5fff0"},"vehicle_id":"MH:02 GO1234","name":"Gloria Onora","blood_grp":"+B","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c33738d7d99338b5fff1"},"vehicle_id":"MH:02 RW1234","name":"Regina Wilbert","blood_grp":"+B","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5e71c37b38d7d99338b5fff2"},"vehicle_id":"MH:02 JL1234","name":"Joel Laurus","blood_grp":"-B","medical_condition":"Health is weak","__v":{"$numberInt":"0"}}

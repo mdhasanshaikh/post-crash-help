@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper, Marker } from "google-maps-react";
+import "../alert-popup.css";
 
 import carIcon from "../../../assert/car-icon.png";
 import ambulanceIcon from "../../../assert/ambulance-icon.png";
@@ -7,9 +8,8 @@ import ambulanceIcon from "../../../assert/ambulance-icon.png";
 class MapContainer extends Component {
   state = {};
   render() {
-
     const mapStyles = {
-      width: "100%",
+      width: "640px",
       height: "360px",
       float: "left"
     };
