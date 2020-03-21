@@ -1,6 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import chevronUpIcon from "../../assert/chevron-up-icon.png";
-import chevronDownIcon from "../../assert/chevron-down-icon.png";
 
 export const NotificationCenterBox = styled.div`
   margin-right: 100px;
@@ -26,8 +24,10 @@ const calculateHeight = props => {
     return `275px`;
   } else if (props.count === 2) {
     return `204px`;
-  } else {
+  } else if (props.count === 1) {
     return `132px`;
+  } else {
+    return `56px`;
   }
 };
 
@@ -63,9 +63,6 @@ const getKeyframes = props => {
 `;
   }
 };
-// const IdleKeyframe = ;
-// const ContractKeyframe = ;
-// const ExpandKeyframe = ;
 
 export const Topbar = styled.div`
   padding: 0px 16px;

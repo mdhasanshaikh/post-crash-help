@@ -57,7 +57,8 @@ class NotificationCenter extends Component {
         <Styled.ContentSection>
           {accidents.map(accident => (
             <Styled.Item key={accident.id}>
-              <Styled.TextSection>
+              <Styled.TextSection
+                onClick={() => this.props.handleItemClick(accident)}>
                 <Styled.TextSectionFirstRow>
                   {accident.location}
                 </Styled.TextSectionFirstRow>
@@ -75,29 +76,6 @@ class NotificationCenter extends Component {
             </Styled.Item>
           ))}
         </Styled.ContentSection>
-        // <React.Fragment>
-        //   {accidents.map(accident => (
-        //     <div key={accident.id} className="notification-item">
-        //       <div
-        //         className="text-section"
-        //         onClick={() => this.props.handleItemClick(accident)}>
-        //         <div className="top-section">
-        //           <div>{accident.location}</div>
-        //           {/* <div>{accident.date}</div> */}
-        //         </div>
-        //         <div className="middle-section">
-        //           <div>{accident.patientName}</div>
-        //           <div>{accident.vehicle_no}</div>
-        //         </div>
-        //       </div>
-        //       <div className="btn-section">
-        //         <button onClick={() => this.handleServedBtnClick(accident.id)}>
-        //           Done
-        //         </button>
-        //       </div>
-        //     </div>
-        //   ))}
-        // </React.Fragment>
       );
     }
   };
@@ -125,31 +103,6 @@ class NotificationCenter extends Component {
         </Styled.Topbar>
         {this.getNotificationCenterContent()}
       </Styled.NotificationCenterBox>
-      // <div
-      //   className={this.getNotificationCenterClasses(
-      //     this.state.noticicationCenterVisible
-      //   )}>
-      //   <div className="top-bar" onClick={this.handleNotificationCenterToggle}>
-      //     <div className="title">
-      //       Notification({this.props.accidents.length})
-      //     </div>
-      //     <button
-      //       className="openCloseBtn"
-      //       onClick={this.handleNotificationCenterToggle}>
-      //       <img
-      //         src={
-      //           this.state.noticicationCenterVisible
-      //             ? chevronDownIcon
-      //             : chevronUpIcon
-      //         }
-      //         alt=""
-      //       />
-      //     </button>
-      //   </div>
-      //   <div className="content-section">
-      //     {this.getNotificationCenterContent()}
-      //   </div>
-      // </div>
     );
   }
 }
