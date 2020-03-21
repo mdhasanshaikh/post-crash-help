@@ -10,7 +10,7 @@ const AccidentSchema = new Schema({
     type: String,
     required: true
   },
-  vehicleId: {
+  vehicle_id: {
     type: String,
     required: true,
     unique: true

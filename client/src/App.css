@@ -25,12 +25,15 @@ main {
   padding: 64px 0px 0px;
   width: calc(100% - 200px);
   height: calc(100vh - 64px);
-  overflow: scroll;
+  display: grid;
+  grid-template-rows: 48px auto;
+  overflow-y: hidden;
   float: left;
 }
 .listTitle {
+  width: 100%;
   color: #163172;
-  margin: 16px 16px 0px;
+  margin: 16px 0px 0px;
   font-size: 20px;
   font-family: OpenSans-Bold;
   float: left;

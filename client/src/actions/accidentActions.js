@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   GET_ACCIDENTS,
   UPDATE_ACCIDENT,
+  UPDATE_ERROR,
   ACCIDENTS_LOADING
 } from "../actions/types";
 
@@ -15,8 +16,9 @@ export const getAccidents = () => dispatch => {
 export const updateAccident = id => dispatch => {
   dispatch(setAccidentLoading());
   axios
-    .put("api/accidents")
-    .then(res => dispatch({ type: UPDATE_ACCIDENT, payload: id }));
+    .put(`api/accidents/${id}`)
+    .then(res => dispatch({ type: UPDATE_ACCIDENT, payload: id }))
+    .catch(err => dispatch({ type: UPDATE_ERROR, payload: err }));
 };
 
 export const setAccidentLoading = () => {

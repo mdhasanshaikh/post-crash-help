@@ -1,12 +1,14 @@
 import {
   GET_ACCIDENTS,
   UPDATE_ACCIDENT,
+  UPDATE_ERROR,
   ACCIDENTS_LOADING
 } from "../actions/types";
 
 const initialState = {
   accidents: [],
-  loading: false
+  loading: false,
+  error: false
 };
 
 export default function(state = initialState, action) {
@@ -19,11 +21,22 @@ export default function(state = initialState, action) {
       };
 
     case UPDATE_ACCIDENT:
+      let accidents = state.accidents.map(accident => {
+        if (accident._id === action.payload) {
+          accident.serve = true;
+        }
+        return accident;
+      });
       return {
         ...state,
-        accidents: state.accidents.filter(
-          accident => accident._id !== action.payload
-        )
+        accidents: accidents
+      };
+
+    case UPDATE_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: true
       };
 
     case ACCIDENTS_LOADING:

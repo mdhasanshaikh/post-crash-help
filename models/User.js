@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
   vehicle_id: {
     type: String,
-    required: true, 
+    required: true
   },
   name: {
     type: String,
@@ -20,3 +20,5 @@ const UserSchema = new Schema({
     type: String
   }
 });
+
+module.exports = User = mongoose.model("user", UserSchema);
