@@ -37,7 +37,7 @@ class AlertPopup extends Component {
       console.log(ambulance.availability && !isServed);
       if (ambulance.availability && !isServed) {
         isServed = true;
-        await this.props.updateAccident(accidentId);
+        await this.props.updateAccident(accidentId, ambulance.vehicle_id);
         await this.props.updateAmbulance(ambulance._id);
         this.setState({});
       }

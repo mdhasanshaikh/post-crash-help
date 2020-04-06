@@ -9,8 +9,8 @@ const Accident = require("../../models/Accident");
 // @access Public
 router.get("/", (req, res) => {
   Accident.find()
-    .then(accidents => res.json(accidents))
-    .catch(err => res.status(404).json({ getting: err }));
+    .then((accidents) => res.json(accidents))
+    .catch((err) => res.status(404).json({ getting: err }));
 });
 
 // @route POST api/ambulance
@@ -21,22 +21,25 @@ router.post("/", (req, res) => {
     latitude: req.body.latitude,
     longitude: req.body.longitude,
     vehicle_id: req.body.vehicle_id,
-    serve: req.body.serve
+    serve: req.body.serve,
   });
 
   newAccident
     .save()
-    .then(accident => res.json(accident))
-    .catch(err => res.status(404).json({ getting: err }));
+    .then((accident) => res.json(accident))
+    .catch((err) => res.status(404).json({ getting: err }));
 });
 
 // @route Update api/accidents
 // @desc Create a POST
 // @access Public
 router.put("/:id", (req, res) => {
-  Accident.updateOne({ _id: req.params.id }, { $set: { serve: true } })
+  Accident.updateOne(
+    { _id: req.params.id },
+    { $set: { serve: true, ambulance_id: req.body.ambulance_id } }
+  )
     .then(() => res.json({ success: true }))
-    .catch(err => res.status(400).json({ success: false, error: err }));
+    .catch((err) => res.status(400).json({ success: false, error: err }));
 });
 
 module.exports = router;

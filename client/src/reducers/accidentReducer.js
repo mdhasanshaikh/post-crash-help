@@ -22,8 +22,9 @@ export default function (state = initialState, action) {
 
     case UPDATE_ACCIDENT:
       let accidents = state.accidents.map((accident) => {
-        if (accident._id === action.payload) {
+        if (accident._id === action.payload.id) {
           accident.serve = true;
+          accident.ambulance_id = action.payload.ambulanceId
         }
         return accident;
       });

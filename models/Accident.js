@@ -4,22 +4,27 @@ const Schema = mongoose.Schema;
 const AccidentSchema = new Schema({
   latitude: {
     type: String,
-    required: true
+    required: true,
   },
   longitude: {
     type: String,
-    required: true
+    required: true,
   },
   vehicle_id: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   serve: {
     type: Boolean,
     required: true,
-    default: false
-  }
+    default: false,
+  },
+  ambulance_id: {
+    type: String,
+    required: true,
+    default: "",
+  },
 });
 
 module.exports = Accident = mongoose.model("accident", AccidentSchema);

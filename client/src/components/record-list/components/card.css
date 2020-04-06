@@ -26,4 +26,5 @@
 .card .content-section {
   display: grid;
   grid-template-columns: repeat(2, auto);
+  grid-auto-flow: row;
 }

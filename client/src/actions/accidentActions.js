@@ -13,12 +13,13 @@ export const getAccidents = () => (dispatch) => {
     .then((res) => dispatch({ type: GET_ACCIDENTS, payload: res.data }));
 };
 
-export const updateAccident = (id) => (dispatch) => {
-  
+export const updateAccident = (id, ambulanceId) => (dispatch) => {
   dispatch(setAccidentLoading());
   axios
-    .put(`api/accidents/${id}`)
-    .then((res) => dispatch({ type: UPDATE_ACCIDENT, payload: id }))
+    .put(`api/accidents/${id}`, { ambulance_id: ambulanceId })
+    .then((res) =>
+      dispatch({ type: UPDATE_ACCIDENT, payload: { id, ambulanceId } })
+    )
     .catch((err) => dispatch({ type: UPDATE_ACCIDENT_ERROR, payload: err }));
 };
 
