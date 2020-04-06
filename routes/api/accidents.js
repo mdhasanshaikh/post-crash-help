@@ -13,8 +13,8 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json({ getting: err }));
 });
 
-//@route POST api/ambulance
-//@desc All POST
+// @route POST api/ambulance
+// @desc All POST
 // @access Public
 router.post("/", (req, res) => {
   const newAccident = new Accident({
@@ -30,13 +30,13 @@ router.post("/", (req, res) => {
     .catch(err => res.status(404).json({ getting: err }));
 });
 
-//@route Update api/accidents
-//@desc Create a POST
-// @access Private
+// @route Update api/accidents
+// @desc Create a POST
+// @access Public
 router.put("/:id", (req, res) => {
   Accident.updateOne({ _id: req.params.id }, { $set: { serve: true } })
     .then(() => res.json({ success: true }))
-    .catch(err => res.status(404).json({ success: false, error: err }));
+    .catch(err => res.status(400).json({ success: false, error: err }));
 });
 
 module.exports = router;

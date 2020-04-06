@@ -40,7 +40,7 @@
   float: left;
   overflow: hidden;
 }
-.content {
+.alert-popup .content {
   padding: 12px 20px 16px;
   width: 600px;
   height: auto;
@@ -50,7 +50,7 @@
   box-shadow: 0 2px 4px 0 rgba(92, 99, 105, 0.3);
   float: left;
 }
-.content .top-section {
+.alert-popup .content .top-section {
   width: inherit;
   height: auto;
   display: grid;
@@ -59,7 +59,7 @@
   justify-content: center;
   float: left;
 }
-.content .top-section .title {
+.alert-popup .content .top-section .title {
   height: inherit;
   text-align: start;
   color: #163172;
@@ -70,7 +70,7 @@
   font-family: OpenSans-Semibold;
   font-size: 20px;
 }
-.content .top-section .date {
+.alert-popup .content .top-section .date {
   height: inherit;
   line-height: 1.65;
   font-size: 16px;
@@ -78,7 +78,7 @@
   text-align: end;
   font-family: Nunito;
 }
-.content .middle-section {
+.alert-popup .content .middle-section {
   width: inherit;
   height: auto;
   color: #979797;
@@ -87,18 +87,21 @@
   font-size: 16px;
   float: left;
 }
-.content .middle-section span {
+.alert-popup .content .middle-section span {
   color: #1e56a0;
 }
-.content .button-section {
+.alert-popup .content .button-section {
   margin-top: 16px;
   margin-bottom: 4px;
   width: 100%;
   height: auto;
+  display: grid;
+  grid-template-columns: 104px 1fr;
+  grid-column-gap: 16px;
   float: left;
 }
-.content .button-section button {
-  width: 104px;
+.alert-popup .content .button-section .button {
+  width: 100%;
   height: 36px;
   color: #fff;
   font-size: 14px;
@@ -111,6 +114,30 @@
   outline: none;
   float: left;
 }
-.content .button-section button:hover {
+.alert-popup .content .button-section .button-disable {
+  width: 104px;
+  height: 36px;
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0.75px;
+  font-family: OpenSans-Semibold;
+  background-color: #d8d8d8;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  float: left;
+}
+.alert-popup .content .button-section .button:hover {
   box-shadow: 0 2px 4px 0 rgba(92, 99, 105, 0.3);
+}
+.content .button-section .error-text {
+  width: 100%;
+  height: 36px;
+  font-family: sans-serif;
+  font-size: 1rem;
+  color: #163172;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }

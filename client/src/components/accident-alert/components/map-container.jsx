@@ -11,24 +11,24 @@ class MapContainer extends Component {
     const mapStyles = {
       width: "640px",
       height: "360px",
-      float: "left"
+      float: "left",
     };
 
     const displayMarkers = () => {
-      return this.props.ambulances.map(ambulance => {
+      return this.props.ambulances.map((ambulance) => {
         return (
           <Marker
-            key={ambulance.id}
-            id={ambulance.id}
-            name={ambulance.vehicle_no}
+            key={ambulance._id}
+            id={ambulance._id}
+            name={ambulance.vehicle_id}
             position={{
-              lat: ambulance.lat,
-              lng: ambulance.lng
+              lat: ambulance.latitude,
+              lng: ambulance.longitude,
             }}
             icon={{
               url: ambulanceIcon,
               anchor: new this.props.google.maps.Point(24, 24),
-              scaledSize: new this.props.google.maps.Size(48, 48)
+              scaledSize: new this.props.google.maps.Size(48, 48),
             }}
             onClick={() =>
               console.log(
@@ -47,7 +47,7 @@ class MapContainer extends Component {
         style={mapStyles}
         initialCenter={{
           lat: this.props.accident.lat,
-          lng: this.props.accident.lng
+          lng: this.props.accident.lng,
         }}>
         <Marker
           key={this.props.accident.id}
@@ -55,12 +55,12 @@ class MapContainer extends Component {
           name={this.props.accident.vehicle_no}
           position={{
             lat: this.props.accident.lat,
-            lng: this.props.accident.lng
+            lng: this.props.accident.lng,
           }}
           icon={{
             url: carIcon,
             anchor: new this.props.google.maps.Point(24, 24),
-            scaledSize: new this.props.google.maps.Size(48, 48)
+            scaledSize: new this.props.google.maps.Size(48, 48),
           }}
           onClick={() =>
             console.log(
@@ -75,5 +75,5 @@ class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyCE9NRqdC2ZRtLK42pUyEMW7flJJhXouIU"
+  apiKey: "AIzaSyCE9NRqdC2ZRtLK42pUyEMW7flJJhXouIU",
 })(MapContainer);

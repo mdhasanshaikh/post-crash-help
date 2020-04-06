@@ -3,20 +3,69 @@ import "./alert-popup.css";
 
 import { connect } from "react-redux";
 import { updateAccident } from "../../actions/accidentActions";
+import { getAmbulances, updateAmbulance } from "../../actions/ambulanceActions";
 import PropTypes from "prop-types";
 
 import MapContainer from "./components/map-container";
 
 class AlertPopup extends Component {
-  state = {};
-
-  static propTypes = {
-    updateAccident: PropTypes.func.isRequired
+  state = {
+    ambulance: {},
   };
 
-  handleServedBtnClick = async accidentId => {
+  componentWillMount = async () => {
+    await this.props.getAmbulances();
+  };
+
+  static propTypes = {
+    ambulance: PropTypes.object.isRequired,
+    updateAccident: PropTypes.func.isRequired,
+    getAmbulances: PropTypes.func.isRequired,
+    updateAmbulance: PropTypes.func.isRequired,
+  };
+
+  handleServedBtnClick = async (accidentId) => {
     await this.props.updateAccident(accidentId);
     this.props.handleAlertBoxClose();
+  };
+
+  handleServedBtnClick = async (accidentId) => {
+    let ambulances = this.props.ambulance.ambulances;
+    var isServed = false;
+
+    ambulances.map(async (ambulance) => {
+      console.log(ambulance.availability && !isServed);
+      if (ambulance.availability && !isServed) {
+        isServed = true;
+        await this.props.updateAccident(accidentId);
+        await this.props.updateAmbulance(ambulance._id);
+        this.setState({});
+      }
+      return null;
+    });
+  };
+
+  getServedBtn = (accident) => {
+    var ambulances = this.props.ambulance.ambulances;
+    ambulances = ambulances.filter(
+      (ambulance) => ambulance.availability === true
+    );
+
+    return ambulances.length ? (
+      <React.Fragment>
+        <button
+          className="button"
+          onClick={() => this.handleServedBtnClick(accident.id)}>
+          Serve
+        </button>
+        <div />
+      </React.Fragment>
+    ) : (
+      <React.Fragment>
+        <button className="button-disable">Serve</button>
+        <div className="error-text">Currently, no ambulance is avaialable.</div>
+      </React.Fragment>
+    );
   };
 
   render() {
@@ -31,7 +80,7 @@ class AlertPopup extends Component {
         <div className="map-container">
           <MapContainer
             accident={this.props.accident}
-            ambulances={this.props.ambulances}
+            ambulances={this.props.ambulance.ambulances}
           />
         </div>
         <div className="popup-box">
@@ -43,11 +92,7 @@ class AlertPopup extends Component {
             <div className="middle-section">
               <span>{accident.patientName}</span>, {accident.license_no}
             </div>
-            <div className="button-section">
-              <button onClick={() => this.handleServedBtnClick(accident.id)}>
-                Serve
-              </button>
-            </div>
+            <div className="button-section">{this.getServedBtn(accident)}</div>
           </div>
         </div>
       </div>
@@ -55,4 +100,12 @@ class AlertPopup extends Component {
   }
 }
 
-export default connect(null, { updateAccident })(AlertPopup);
+const mapStateToProps = (state) => ({
+  ambulance: state.ambulance,
+});
+
+export default connect(mapStateToProps, {
+  updateAccident,
+  getAmbulances,
+  updateAmbulance,
+})(AlertPopup);

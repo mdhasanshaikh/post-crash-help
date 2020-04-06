@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
-import { getAccidents, updateAccident } from "../actions/accidentActions";
+import { getAccidents } from "../actions/accidentActions";
 import { getUsers } from "../actions/userActions";
-import { getAmbulances } from "../actions/ambulanceActions";
 import PropTypes from "prop-types";
 
 import RecordList from "./record-list/record-list";
@@ -13,26 +12,31 @@ import NotificationCenter from "../components/notification-center/notification-c
 class ContentHolder extends Component {
   state = {
     accident: {
-      accidents: []
+      accidents: [],
     },
     user: {},
-    ambulance: {},
-    clickedAccident: {}
+    clickedAccident: {},
+  };
+
+  static propTypes = {
+    getAccidents: PropTypes.func.isRequired,
+    getUsers: PropTypes.func.isRequired,
+    accident: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
   };
 
   componentWillMount = async () => {
     await this.props.getAccidents();
     await this.props.getUsers();
-    await this.props.getAmbulances();
   };
 
   getServedAccidents = (serve, accidents, users) => {
     if (accidents.length) {
-      accidents = accidents.filter(accident => accident.serve === serve);
+      accidents = accidents.filter((accident) => accident.serve === serve);
 
       let allAccidents = [];
-      accidents.map(accident => {
-        return users.map(user => {
+      accidents.map((accident) => {
+        return users.map((user) => {
           if (user.vehicle_id === accident.vehicle_id) {
             let formatedAccident = {};
             formatedAccident.id = accident._id;
@@ -41,24 +45,24 @@ class ContentHolder extends Component {
               {
                 key: 0,
                 title: "Vehicle no.",
-                text: accident.vehicle_id
+                text: accident.vehicle_id,
               },
               {
                 key: 1,
                 title: "Medical condition",
-                text: user.medical_condition
+                text: user.medical_condition,
               },
               {
                 key: 2,
                 title: "Blood Group",
-                text: user.blood_grp
+                text: user.blood_grp,
               },
               {
                 key: 3,
                 title: "Location",
                 text: "Open Google Map",
-                coordinates: accident.latitude + ", " + accident.longitude
-              }
+                coordinates: accident.latitude + ", " + accident.longitude,
+              },
             ];
             allAccidents.push(formatedAccident);
           }
@@ -71,11 +75,11 @@ class ContentHolder extends Component {
 
   getUnServedAccidents = (serve, accidents, users) => {
     if (accidents.length) {
-      accidents = accidents.filter(accident => accident.serve === serve);
+      accidents = accidents.filter((accident) => accident.serve === serve);
 
       let allAccidents = [];
-      accidents.map(accident => {
-        return users.map(user => {
+      accidents.map((accident) => {
+        return users.map((user) => {
           if (user.vehicle_id === accident.vehicle_id) {
             let formatedAccident = {};
 
@@ -96,35 +100,14 @@ class ContentHolder extends Component {
     return [];
   };
 
-  getFormatedAmbulance = ambulances => {
-    if (ambulances.length) {
-      ambulances = ambulances.filter(ambulance => ambulance.availability);
-
-      let allAmbulance = [];
-      ambulances.map(ambulance => {
-        let formatedAmbulance = {};
-        formatedAmbulance.id = ambulance._id;
-        formatedAmbulance.lat = parseFloat(ambulance.latitude);
-        formatedAmbulance.lng = parseFloat(ambulance.longitude);
-        formatedAmbulance.vehicle_no = ambulance.vehicle_id;
-
-        allAmbulance.push(formatedAmbulance);
-      });
-
-      return allAmbulance;
-    }
-
-    return [];
-  };
-
-  handleNotificationItemClick = clickAccident => {
+  handleNotificationItemClick = (clickAccident) => {
     console.log(clickAccident);
     this.setState({ clickedAccident: clickAccident });
   };
 
   handleAlertBoxClose = () => {
     this.setState({
-      clickedAccident: {}
+      clickedAccident: {},
     });
   };
 
@@ -141,7 +124,6 @@ class ContentHolder extends Component {
             )}
           />
         </main>
-
         <NotificationCenter
           accidents={this.getUnServedAccidents(
             false,
@@ -149,17 +131,11 @@ class ContentHolder extends Component {
             this.props.user.users
           )}
           handleItemClick={this.handleNotificationItemClick}
-          handleServedBtnClick={this.handleServedBtnClick}
         />
-
         {Object.entries(this.state.clickedAccident).length === 0 ? null : (
           <AlertPopup
             accident={this.state.clickedAccident}
-            ambulances={this.getFormatedAmbulance(
-              this.props.ambulance.ambulances
-            )}
             handleAlertBoxClose={this.handleAlertBoxClose}
-            handleServedBtnClick={this.handleServedBtnClick}
           />
         )}
       </React.Fragment>
@@ -167,22 +143,12 @@ class ContentHolder extends Component {
   }
 }
 
-ContentHolder.propTypes = {
-  getAccidents: PropTypes.func.isRequired,
-  accident: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired,
-  ambulance: PropTypes.object.isRequired
-};
-
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   accident: state.accident,
   user: state.user,
-  ambulance: state.ambulance
 });
 
 export default connect(mapStateToProps, {
   getAccidents,
-  updateAccident,
   getUsers,
-  getAmbulances
 })(ContentHolder);

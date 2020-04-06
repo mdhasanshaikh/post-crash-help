@@ -12,14 +12,14 @@ export const NotificationCenterBox = styled.div`
   overflow: hidden;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(92, 99, 105, 0.3);
-  animation-name: ${props => getKeyframes(props)};
+  animation-name: ${(props) => getKeyframes(props)};
   animation-duration: 0.25s;
   animation-timing-function: ease;
   animation-delay: 0s;
   animation-fill-mode: forwards;
 `;
 
-const calculateHeight = props => {
+const calculateHeight = (props) => {
   if (props.count >= 3) {
     return `275px`;
   } else if (props.count === 2) {
@@ -31,7 +31,7 @@ const calculateHeight = props => {
   }
 };
 
-const getKeyframes = props => {
+const getKeyframes = (props) => {
   const height = calculateHeight(props);
 
   if (props.isOpen === null) {
@@ -171,4 +171,29 @@ export const ServeBtn = styled.button`
   border: none;
   outline: none;
   background-color: transparent;
+`;
+export const DisableBtn = styled.button`
+  width: 100%;
+  height: 36px;
+  font-size: 14px;
+  color: #d8d8d8;
+  font-family: Nunito-Semibold;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  :hover::before {
+    content: "No ambulance is available.";
+    width: 200px;
+    height: 40px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #163172;
+    background-color: #fff;
+    transform: translate(-100%, -25%);
+    box-shadow: 0 2px 4px 0 rgba(92, 99, 105, 0.3);
+    border-radius: 4px;
+  }
 `;

@@ -1,27 +1,27 @@
 import {
   GET_ACCIDENTS,
   UPDATE_ACCIDENT,
-  UPDATE_ERROR,
-  ACCIDENTS_LOADING
+  UPDATE_ACCIDENT_ERROR,
+  ACCIDENTS_LOADING,
 } from "../actions/types";
 
 const initialState = {
   accidents: [],
   loading: false,
-  error: false
+  error: false,
 };
 
-export default function(state = initialState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_ACCIDENTS:
       return {
         ...state,
         accidents: action.payload,
-        loading: false
+        loading: false,
       };
 
     case UPDATE_ACCIDENT:
-      let accidents = state.accidents.map(accident => {
+      let accidents = state.accidents.map((accident) => {
         if (accident._id === action.payload) {
           accident.serve = true;
         }
@@ -29,20 +29,20 @@ export default function(state = initialState, action) {
       });
       return {
         ...state,
-        accidents: accidents
+        accidents: accidents,
       };
 
-    case UPDATE_ERROR:
+    case UPDATE_ACCIDENT_ERROR:
       return {
         ...state,
         loading: false,
-        error: true
+        error: true,
       };
 
     case ACCIDENTS_LOADING:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
 
     default:

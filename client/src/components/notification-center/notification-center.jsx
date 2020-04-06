@@ -5,6 +5,7 @@ import chevronDownIcon from "../../assert/chevron-down-icon.png";
 
 import { connect } from "react-redux";
 import { updateAccident } from "../../actions/accidentActions";
+import { getAmbulances, updateAmbulance } from "../../actions/ambulanceActions";
 import PropTypes from "prop-types";
 
 import * as Styled from "./styles";
@@ -12,14 +13,22 @@ import * as Styled from "./styles";
 class NotificationCenter extends Component {
   state = {
     noticicationCenterVisible: null,
-    firstClick: false
+    firstClick: false,
+    ambulance: {},
   };
 
   static propTypes = {
-    updateAccident: PropTypes.func.isRequired
+    ambulance: PropTypes.object.isRequired,
+    updateAccident: PropTypes.func.isRequired,
+    getAmbulances: PropTypes.func.isRequired,
+    updateAmbulance: PropTypes.func.isRequired,
   };
 
-  getNotificationCenterClasses = status => {
+  componentWillMount = async () => {
+    await this.props.getAmbulances();
+  };
+
+  getNotificationCenterClasses = (status) => {
     const firstClick = this.state.firstClick;
     if (!firstClick) {
       return "notification-center";
@@ -42,8 +51,35 @@ class NotificationCenter extends Component {
     this.setState({ noticicationCenterVisible, firstClick });
   };
 
-  handleServedBtnClick = async accidentId => {
-    await this.props.updateAccident(accidentId);
+  handleServedBtnClick = async (accidentId) => {
+    let ambulances = this.props.ambulance.ambulances;
+    var isServed = false;
+
+    ambulances.map(async (ambulance) => {
+      console.log(ambulance.availability && !isServed);
+      if (ambulance.availability && !isServed) {
+        isServed = true;
+        await this.props.updateAccident(accidentId);
+        await this.props.updateAmbulance(ambulance._id);
+        this.setState({});
+      }
+      return null;
+    });
+  };
+
+  getServedBtn = (accident) => {
+    var ambulances = this.props.ambulance.ambulances;
+    ambulances = ambulances.filter(
+      (ambulance) => ambulance.availability === true
+    );
+    
+    return ambulances.length ? (
+      <Styled.ServeBtn onClick={() => this.handleServedBtnClick(accident.id)}>
+        Serve
+      </Styled.ServeBtn>
+    ) : (
+      <Styled.DisableBtn>Serve</Styled.DisableBtn>
+    );
   };
 
   getNotificationCenterContent = () => {
@@ -54,7 +90,7 @@ class NotificationCenter extends Component {
     } else {
       return (
         <Styled.ContentSection>
-          {accidents.map(accident => (
+          {accidents.map((accident) => (
             <Styled.Item key={accident.id}>
               <Styled.TextSection
                 onClick={() => this.props.handleItemClick(accident)}>
@@ -67,10 +103,7 @@ class NotificationCenter extends Component {
                 </Styled.TextSectionSecondRow>
               </Styled.TextSection>
               <Styled.BtnSection>
-                <Styled.ServeBtn
-                  onClick={() => this.handleServedBtnClick(accident.id)}>
-                  Serve
-                </Styled.ServeBtn>
+                {this.getServedBtn(accident)}
               </Styled.BtnSection>
             </Styled.Item>
           ))}
@@ -82,7 +115,7 @@ class NotificationCenter extends Component {
   render() {
     const props = {
       isOpen: this.state.noticicationCenterVisible,
-      count: this.props.accidents.length
+      count: this.props.accidents.length,
     };
 
     return (
@@ -106,4 +139,12 @@ class NotificationCenter extends Component {
   }
 }
 
-export default connect(null, { updateAccident })(NotificationCenter);
+const mapStateToProps = (state) => ({
+  ambulance: state.ambulance,
+});
+
+export default connect(mapStateToProps, {
+  updateAccident,
+  getAmbulances,
+  updateAmbulance,
+})(NotificationCenter);
