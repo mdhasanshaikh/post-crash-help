@@ -22,7 +22,6 @@ const AccidentSchema = new Schema({
   },
   ambulance_id: {
     type: String,
-    required: true,
     default: "",
   },
 });

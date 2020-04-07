@@ -12,7 +12,7 @@ class Card extends Component {
           <div className="date">{this.props.content.date}</div>
         </div>
         <div className="content-section">
-          {this.props.content.descript.map(item => {
+          {this.props.content.descript.map((item) => {
             return <TextWithTitle key={item.key} content={item} />;
           })}
         </div>

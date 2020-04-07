@@ -63,6 +63,11 @@ class ContentHolder extends Component {
                 text: "Open Google Map",
                 coordinates: accident.latitude + ", " + accident.longitude,
               },
+              {
+                key: 4,
+                title: "Ambulance No.",
+                text: accident.ambulance_id,
+              },
             ];
             allAccidents.push(formatedAccident);
           }
