@@ -1,0 +1,44 @@
+// Open two instance(Client & Server) of CMD/PowerShell/Terminal
+
+// In first instance, 
+// create the replica instance of existing one and start the mongoDB server on the respective system
+cmd: mongod --replSet anyReplicaName
+for e.g. 
+cmd: mongod --replSet rs
+
+// In case, you had change the default path of data directory then use the following
+cmd: mongod --dbpath <data_path> --replSet anyReplicaName
+for e.g. 
+cmd: mongod --dbpath /System/Volumes/Data/data/db --replSet rs
+
+// Now second instance.
+// Now, start mongodb command-line i.e. client
+cmd: mongo
+
+// Then we will initiate the previously replica by using initiate method
+cmd: rs.initiate() 
+
+// Now, we will switch to our respective database
+cmd: use anyDBName
+for e.g. 
+cmd: use test
+
+
+// Then, goto the config folder and open default.json
+change localMongoURI 
+from "localMongoURI": "mongodb://localhost:27017/test"
+to   "localMongoURI": "mongodb://localhost:27017/test?replicaSet=rs"
+
+
+// Make sure the client socket url(src/component/content-holder) and proxy url(package.json) should be same on the frontend.
+// Client Socket
+for e.g.
+const socket = io.connect("http://127.0.0.1:5000");
+
+// Proxy Url
+for e.g.
+"proxy": "http://127.0.0.1:5000"
+
+
+// Even, if you have any further then checkout this link.
+https://pusher.com/tutorials/mongodb-change-streams

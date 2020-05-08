@@ -1,0 +1,32 @@
+.button {
+  width: 100%;
+  height: 36px;
+  font-size: 14px;
+  letter-spacing: 0.75px;
+  font-family: OpenSans-Semibold;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  float: left;
+}
+.button:hover {
+  box-shadow: 0 2px 4px 0 rgba(92, 99, 105, 0.3);
+}
+.contained {
+  color: #fff;
+  background-color: #163172;
+}
+.contained-disable {
+  color: #979797;
+  background-color: #d8d8d8;
+}
+.outline {
+  color: #163172;
+  background-color: transparent;
+  border: 1px solid #163172;
+}
+.text {
+  color: #163172;
+  background-color: transparent;
+}
