@@ -1,4 +1,5 @@
 // Open two instance(Client & Server) of CMD/PowerShell/Terminal
+// keyword cmd: - (for understanding purpose only.)
 
 // In first instance, 
 // create the replica instance of existing one and start the mongoDB server on the respective system

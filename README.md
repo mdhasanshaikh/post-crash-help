@@ -22,7 +22,7 @@ npm run install-dependencies
 
 ### MongoDB URI
 
-In order to run the application, you will need to put the mongoDB URI's in the default.json file which is present inside of config directory.
+In order to run the application, you will need to put the mongoDB URI's in the default.json file which is present in the config directory.
 
 ```
 "hostedMongoURI": "mongoDBAtlas",

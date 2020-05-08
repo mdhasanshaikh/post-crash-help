@@ -12,7 +12,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socket(server);
 
-//  accident
+// import accident and initialize the watcher
 const Accident = require("./models/Accident");
 const accidentChangeStream = Accident.watch();
 
