@@ -20,6 +20,15 @@ After, installation is done then run npm install-dependencies command so that al
 npm run install-dependencies
 ```
 
+### MongoDB URI
+
+In order to run the application, you will need to put the mongoDB URI's in the default.json file which is present inside of config directory.
+
+```
+"hostedMongoURI": "mongoDBAtlas",
+"localMongoURI": "localMongoDB"
+```
+
 ## Running App
 
 Make sure you are in root folder and just run the following command. It will start front-end and back-end with a single script.
