@@ -1,4 +1,5 @@
 {
-  "hostedMongoURI": "mongoDBAtlas",
-  "localMongoURI": "localMongoDB"
+  "hostedMongoURI": "mongodb+srv://root:root@cluster0-ekkoi.mongodb.net/test?retryWrites=true&w=majority",
+  "localMongoURI": "mongodb+srv://root:root@cluster0-ekkoi.mongodb.net/test?retryWrites=true&w=majority",
+  "localURI": "mongodb://localhost:27017/test?replicaSet=rs"
 }

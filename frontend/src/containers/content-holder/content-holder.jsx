@@ -41,7 +41,7 @@ class ContentHolder extends Component {
 
     // socket started listening to changes
     socket.on("listenToAccidentCollectionChanges", (res) => {
-      console.log("Client socket is connected successfully.");
+      // console.log("Getting new data.");
       this.props.listenToAccidentCollectionUpdate(res);
     });
   };

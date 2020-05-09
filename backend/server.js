@@ -43,6 +43,8 @@ io.on("connection", () => {
 
 // allow-cors
 app.use(function (req, res, next) {
+  req.headers["if-none-match"] = "";
+  req.headers["if-modified-since"] = "";
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
@@ -52,10 +54,10 @@ app.use(function (req, res, next) {
 });
 
 // configure app
+app.set("etag", false);
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
 
 // all routes
 app.use("/api/accidents", require("./routes/api/accidents"));

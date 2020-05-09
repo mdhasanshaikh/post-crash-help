@@ -1,9 +1,9 @@
 const Accident = require("../models/Accident");
 
 const getAccidents = (req, res) => {
+  res.header
   Accident.find()
     .then((accidents) => {
-      console.log(accidents);
       res.json({
         success: true,
         message: "Accidents fetched successfully",

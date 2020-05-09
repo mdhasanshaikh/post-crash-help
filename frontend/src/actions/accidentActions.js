@@ -34,7 +34,7 @@ export const updateAccident = (id, ambulanceId) => (dispatch) => {
 export const listenToAccidentCollectionUpdate = (res) => (dispatch) => {
   dispatch(setAccidentUpdateListening());
 
-  console.log("update the store with new value");
+  // console.log("update the store with new value");
   if (res.success) {
     dispatch({ type: LISTENED_ACCIDENT_UPDATE, payload: res.accident });
   } else {
