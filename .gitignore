@@ -3,7 +3,7 @@
 # dependencies
 /frontend/node_modules
 /backend/node_modules
-/localDBConneaction/node_modules
+/localDBConnection/node_modules
 /hostedDBConnection/node_modules
 /node_modules
 /.pnp
