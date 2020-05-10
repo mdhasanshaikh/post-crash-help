@@ -2,8 +2,9 @@
 
 # dependencies
 /frontend/node_modules
-/frontend/.txt
 /backend/node_modules
+/localDBConneaction/node_modules
+/hostedDBConnection/node_modules
 /node_modules
 /.pnp
 .pnp.js

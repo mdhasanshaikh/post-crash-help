@@ -5,7 +5,9 @@
   "scripts": {
     "frontend-dependencies": "cd frontend && npm install",
     "backend-dependencies": "cd backend && npm install",
-    "install-dependencies": "concurrently \"npm run frontend-dependencies\" \"npm run backend-dependencies\"",
+    "localDB-dependencies": "cd localDBConnection && npm install",
+    "hostedDB-dependencies": "cd hostedDBConnection && npm install",
+    "install-dependencies": "concurrently \"npm run frontend-dependencies\" \"npm run backend-dependencies\" \"npm run localDB-dependencies\" \"npm run hostedDB-dependencies\"",
     "frontend": "cd frontend && npm run dev",
     "backend": "cd backend && npm run dev",
     "start": "concurrently \"npm run frontend\" \"npm run backend\""

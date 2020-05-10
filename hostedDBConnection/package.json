@@ -1,0 +1,13 @@
+{
+  "name": "hosteddbconnection",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": ""
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.9.13"
+  }
+}

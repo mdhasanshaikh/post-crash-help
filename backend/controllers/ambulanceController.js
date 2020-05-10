@@ -1,4 +1,4 @@
-const Ambulance = require("../models/Ambulance");
+const Ambulance = require("../../localDBConnection/models/Ambulance");
 
 const getAmbulances = (req, res) => {
   Ambulance.find()

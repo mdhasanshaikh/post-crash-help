@@ -1,4 +1,4 @@
-const Accident = require("../models/Accident");
+const Accident = require("../../localDBConnection/models/Accident");
 
 const getAccidents = (req, res) => {
   res.header

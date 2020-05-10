@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const http = require("http");
 const bodyParser = require("body-parser");
 const logger = require("morgan");
@@ -13,7 +12,7 @@ const server = http.createServer(app);
 const io = socket(server);
 
 // import accident and initialize the watcher
-const Accident = require("./models/Accident");
+const Accident = require("../localDBConnection/models/Accident");
 const accidentChangeStream = Accident.watch();
 
 // Listening to accident collecion

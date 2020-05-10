@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../../hostedDBConnection/model/User");
 
 const getUsers = (req, res) => {
   User.find()
